@@ -1,0 +1,320 @@
+{
+  "data_uploaded": false,
+  "inference_source": "clean local Git clone at tested_commit",
+  "model_sha256": "76c4508ff2091e008de23ddec32ecfc86f989e172916702cadd37511dc68b672",
+  "package_manifest_sha256": "9e2da0822adad6fa436eebd771640f0648f58e9d78f8203d240b98afe6ef7e02",
+  "profiles": {
+    "linux": {
+      "execution_host": "local Ubuntu WSL on the same physical Windows host",
+      "final_csv_byte_equal_to_deliverable": true,
+      "final_csv_bytes": 1882093,
+      "full_inference_passes": 2,
+      "installed_versions": {
+        "Jinja2": "3.1.6",
+        "MarkupSafe": "2.1.3",
+        "filelock": "3.12.0",
+        "fsspec": "2026.2.0",
+        "joblib": "1.3.2",
+        "mpmath": "1.3.0",
+        "networkx": "3.1",
+        "numpy": "1.26.4",
+        "pandas": "1.5.2",
+        "pip": "26.2.2",
+        "python-dateutil": "2.8.2",
+        "pytz": "2026.3.post1",
+        "scikit-learn": "1.3.2",
+        "scipy": "1.10.1",
+        "setuptools": "69.2.0",
+        "six": "1.16.0",
+        "sympy": "1.14.0",
+        "threadpoolctl": "3.2.0",
+        "torch": "2.11.0+cpu",
+        "typing_extensions": "4.16.0"
+      },
+      "native_and_final_frames_and_labels_unchanged": true,
+      "native_csv_bytes": 1682773,
+      "reproduction": {
+        "frames": 199319,
+        "input_sha256": {
+          "tactical/BAR-ATH_tactical_atd.txt": "f130e350d2bfdf734b7e32f072931fccc6d015c1e837d082064875fe0a700431",
+          "tactical/BAR-ATH_tactical_atd.xml": "327e35e32e46a647389b88f883d4f9a2ab931e3e6148aef2fcf8f22b1e93c43a"
+        },
+        "model_sha256": "76c4508ff2091e008de23ddec32ecfc86f989e172916702cadd37511dc68b672",
+        "native_manifest_sha256": "72e49f7d091a5c1ffd26385a70717fecdc18d405eeda393baa941998dd4a1df9",
+        "native_output": "native-output/ochtagon.csv",
+        "native_sha256": "565cd2a171a0ba073f4e23a3eac2564a217f8b8c9f507b91558e52c8b3383fcc",
+        "official_format_valid": true,
+        "output": "output/ochtagon.csv",
+        "package_manifest_sha256": "9e2da0822adad6fa436eebd771640f0648f58e9d78f8203d240b98afe6ef7e02",
+        "profile": "linux",
+        "reference_hash_matched": true,
+        "schema": "ochtagon-reproduction-v2",
+        "serialization": "CRLF",
+        "setup_sha256": "e2124e7ef845fd5cfb3d4ffca10a53e9675936ac5b27e5a1eabe64f51a714d9e",
+        "submission_sha256": "35d905533b696bee3f29da3e6c9f24ebab76780982e9f2325b6e67784dfea303",
+        "success": true
+      },
+      "reproduction_receipt_sha256": "3aa6a716d16a8f0c8f66e360fb66fd409d9debe267b9c887c01ac930b99e9383",
+      "setup_identity": {
+        "launcher_sha256": {
+          "reproduce.py": "ba1d5f90015dcb15af2027b94f86c75870b694d9a505b6aad0a3242785839a60",
+          "runtime.py": "748ec1bea831af48ff9c9ef5d9d2fcbf0ead83e80ef5493b485c98d3b1f05e75",
+          "setup.py": "94d355ed0f964b951861f106324cc9d50365b53dd3423eed3dd190d0f7f1dcf8",
+          "verify.py": "7ccebb5dedda80c18565b7faf6022776ef133ca083bc34e52231726eb18b8301"
+        },
+        "lock_sha256": "cf0c9c138e571019cbab8e032c769915f476a79469040bcfbb021ec138676399",
+        "model_sha256": "76c4508ff2091e008de23ddec32ecfc86f989e172916702cadd37511dc68b672",
+        "package_manifest_sha256": "9e2da0822adad6fa436eebd771640f0648f58e9d78f8203d240b98afe6ef7e02",
+        "profile": "linux",
+        "runtime": {
+          "bits": 64,
+          "implementation": "CPython",
+          "libc": "glibc",
+          "libc_version": "2.43",
+          "machine": "x86_64",
+          "macos": "",
+          "system": "Linux",
+          "version": "3.11.18"
+        }
+      },
+      "setup_receipt_sha256": "e2124e7ef845fd5cfb3d4ffca10a53e9675936ac5b27e5a1eabe64f51a714d9e",
+      "status": "exact_reproduction_passed",
+      "tests": {
+        "discovered": 20,
+        "passed": 16,
+        "skip_reason": "PowerShell unavailable; Windows-only wrapper tests",
+        "skipped": 4
+      }
+    },
+    "macos": {
+      "status": "wheel_download_hashes_verified_execution_untested",
+      "wheel_validation": {
+        "all_binary_hashes_and_sizes_match": true,
+        "all_embedded_wheel_metadata_matches": true,
+        "checked_utc": "2026-11-09T22:29:47.264130+00:00",
+        "installed": false,
+        "lock_sha256": "63cf427b1809fe0f2dc0538aa38ba3ae0c70ec11316d76337df4dcf9d79888f2",
+        "macos_runtime_executed": false,
+        "model_loaded": false,
+        "pip_download_exit_code": 0,
+        "pip_version": "22.3",
+        "profile": "macos-arm64",
+        "provided_data_accessed": false,
+        "schema": "ochtagon-platform-wheel-validation-v1",
+        "sources_sha256": "c4e0a5f2791a2cf66aec83bb2131a82d4a9bb33efe6aa12e451e4ae4c76b0ede",
+        "target_platform": "macosx_12_0_arm64",
+        "target_python": "CPython 3.11",
+        "total_bytes": 154559425,
+        "validation_host": "Windows AMD64",
+        "wheel_count": 19,
+        "wheels": [
+          {
+            "bytes": 10702,
+            "embedded_metadata_matches_source": true,
+            "filename": "filelock-3.12.0-py3-none-any.whl",
+            "sha256": "ad98852315c2ab702aeb628412cbf7e95b7ce8c3bf9565670b4eaecf1db370a9"
+          },
+          {
+            "bytes": 202505,
+            "embedded_metadata_matches_source": true,
+            "filename": "fsspec-2026.2.0-py3-none-any.whl",
+            "sha256": "98de475b5cb3bd66bedd5c4679e87b4fdfe1a3bf4d707b151b3c07e58c9a2437"
+          },
+          {
+            "bytes": 134899,
+            "embedded_metadata_matches_source": true,
+            "filename": "jinja2-3.1.6-py3-none-any.whl",
+            "sha256": "85ece4451f492d0c13c5dd7c13a64681a86afae63a5f347908daf103ce6d2f67"
+          },
+          {
+            "bytes": 302207,
+            "embedded_metadata_matches_source": true,
+            "filename": "joblib-1.3.2-py3-none-any.whl",
+            "sha256": "ef4331c65f239985f3f2220ecc87db222f08fd22097a3dd5698f693875f8cbb9"
+          },
+          {
+            "bytes": 17862,
+            "embedded_metadata_matches_source": true,
+            "filename": "MarkupSafe-2.1.3-cp311-cp311-macosx_10_9_universal2.whl",
+            "sha256": "ad9e82fb8f09ade1c3e1b996a6337afac2b8b9e365f926f5a61aacc71adc5b3c"
+          },
+          {
+            "bytes": 536198,
+            "embedded_metadata_matches_source": true,
+            "filename": "mpmath-1.3.0-py3-none-any.whl",
+            "sha256": "a0b2b9fe80bbcd81a6647ff13108738cfb482d481d826cc0e02f5b35e5c88d2c"
+          },
+          {
+            "bytes": 2072251,
+            "embedded_metadata_matches_source": true,
+            "filename": "networkx-3.1-py3-none-any.whl",
+            "sha256": "4f33f68cb2afcf86f28a45f43efc27a9386b535d567d2127f8f61d51dec58d36"
+          },
+          {
+            "bytes": 13997127,
+            "embedded_metadata_matches_source": true,
+            "filename": "numpy-1.26.4-cp311-cp311-macosx_11_0_arm64.whl",
+            "sha256": "edd8b5fe47dab091176d21bb6de568acdd906d1887a4584a15a9a96a1dca06ef"
+          },
+          {
+            "bytes": 10706048,
+            "embedded_metadata_matches_source": true,
+            "filename": "pandas-1.5.2-cp311-cp311-macosx_11_0_arm64.whl",
+            "sha256": "b4f5a82afa4f1ff482ab8ded2ae8a453a2cdfde2001567b3ca24a4c5c5ca0db3"
+          },
+          {
+            "bytes": 247702,
+            "embedded_metadata_matches_source": true,
+            "filename": "python_dateutil-2.8.2-py2.py3-none-any.whl",
+            "sha256": "961d03dc3453ebbc59dbdea9e4e11c5651520a876d0f4db161e8674aae935da9"
+          },
+          {
+            "bytes": 508283,
+            "embedded_metadata_matches_source": true,
+            "filename": "pytz-2026.3.post1-py2.py3-none-any.whl",
+            "sha256": "dd95840dd199baea12d9cc096a1d452caa6596a1c1e4b5f3dbd1541855d5e815"
+          },
+          {
+            "bytes": 9383415,
+            "embedded_metadata_matches_source": true,
+            "filename": "scikit_learn-1.3.2-cp311-cp311-macosx_12_0_arm64.whl",
+            "sha256": "18424efee518a1cde7b0b53a422cde2f6625197de6af36da0b57ec502f126157"
+          },
+          {
+            "bytes": 28717513,
+            "embedded_metadata_matches_source": true,
+            "filename": "scipy-1.10.1-cp311-cp311-macosx_12_0_arm64.whl",
+            "sha256": "d925fa1c81b772882aa55bcc10bf88324dadb66ff85d548c71515f6689c6dac5"
+          },
+          {
+            "bytes": 821485,
+            "embedded_metadata_matches_source": true,
+            "filename": "setuptools-69.2.0-py3-none-any.whl",
+            "sha256": "c21c49fb1042386df081cb5d86759792ab89efca84cf114889191cd09aacc80c"
+          },
+          {
+            "bytes": 11053,
+            "embedded_metadata_matches_source": true,
+            "filename": "six-1.16.0-py2.py3-none-any.whl",
+            "sha256": "8abb2f1d86890a2dfb989f9a77cfcfd3e47c2a354b01111771326f8aa26e0254"
+          },
+          {
+            "bytes": 6299353,
+            "embedded_metadata_matches_source": true,
+            "filename": "sympy-1.14.0-py3-none-any.whl",
+            "sha256": "e091cc3e99d2141a0ba2847328f5479b05d94a6635cb96148ccb3f34671bd8f5"
+          },
+          {
+            "bytes": 15539,
+            "embedded_metadata_matches_source": true,
+            "filename": "threadpoolctl-3.2.0-py3-none-any.whl",
+            "sha256": "2b7818516e423bdaebb97c723f86a7c6b0a83d3f3b0970328d66f4d9104dc032"
+          },
+          {
+            "bytes": 80529712,
+            "embedded_metadata_matches_source": true,
+            "filename": "torch-2.11.0-cp311-cp311-macosx_11_0_arm64.whl",
+            "sha256": "7b6a60d48062809f58595509c524b88e6ddec3ebe25833d6462eeab81e5f2ce4"
+          },
+          {
+            "bytes": 45571,
+            "embedded_metadata_matches_source": true,
+            "filename": "typing_extensions-4.16.0-py3-none-any.whl",
+            "sha256": "481caa481374e813c1b176ada14e97f1f67a4539ce9cfeb3f350d78d6370c2e8"
+          }
+        ]
+      }
+    },
+    "windows": {
+      "execution_host": "Windows AMD64 via Command Prompt",
+      "final_csv_byte_equal_to_deliverable": true,
+      "final_csv_bytes": 1882093,
+      "full_inference_passes": 2,
+      "installed_versions": {
+        "Jinja2": "3.1.6",
+        "MarkupSafe": "2.1.3",
+        "filelock": "3.12.0",
+        "fsspec": "2026.2.0",
+        "joblib": "1.3.2",
+        "mpmath": "1.3.0",
+        "networkx": "3.1",
+        "numpy": "1.26.4",
+        "pandas": "1.5.2",
+        "pip": "22.3",
+        "python-dateutil": "2.8.2",
+        "pytz": "2026.3.post1",
+        "scikit-learn": "1.3.2",
+        "scipy": "1.10.1",
+        "setuptools": "69.2.0",
+        "six": "1.16.0",
+        "sympy": "1.14.0",
+        "threadpoolctl": "3.2.0",
+        "torch": "2.11.0+cu128",
+        "typing_extensions": "4.16.0"
+      },
+      "native_and_final_frames_and_labels_unchanged": true,
+      "native_csv_bytes": 1882093,
+      "reproduction": {
+        "frames": 199319,
+        "input_sha256": {
+          "tactical/BAR-ATH_tactical_atd.txt": "f130e350d2bfdf734b7e32f072931fccc6d015c1e837d082064875fe0a700431",
+          "tactical/BAR-ATH_tactical_atd.xml": "327e35e32e46a647389b88f883d4f9a2ab931e3e6148aef2fcf8f22b1e93c43a"
+        },
+        "model_sha256": "76c4508ff2091e008de23ddec32ecfc86f989e172916702cadd37511dc68b672",
+        "native_manifest_sha256": "bcf1b8a28db2f91741f37371f33791aac4ff73cabcef6e4b1f8c1d54bc1d1bc7",
+        "native_output": "native-output/ochtagon.csv",
+        "native_sha256": "35d905533b696bee3f29da3e6c9f24ebab76780982e9f2325b6e67784dfea303",
+        "official_format_valid": true,
+        "output": "output/ochtagon.csv",
+        "package_manifest_sha256": "9e2da0822adad6fa436eebd771640f0648f58e9d78f8203d240b98afe6ef7e02",
+        "profile": "windows",
+        "reference_hash_matched": true,
+        "schema": "ochtagon-reproduction-v2",
+        "serialization": "CRLF",
+        "setup_sha256": "6e8e5e8d6836320f4029cce603d52a7eff871c49f335600cd7ca266cab06527c",
+        "submission_sha256": "35d905533b696bee3f29da3e6c9f24ebab76780982e9f2325b6e67784dfea303",
+        "success": true
+      },
+      "reproduction_receipt_sha256": "9c16db91744dc05a1b9ec615192f006dfb07b148d07cb94b4dcaf2a85e11114f",
+      "setup_identity": {
+        "launcher_sha256": {
+          "reproduce.py": "ba1d5f90015dcb15af2027b94f86c75870b694d9a505b6aad0a3242785839a60",
+          "runtime.py": "748ec1bea831af48ff9c9ef5d9d2fcbf0ead83e80ef5493b485c98d3b1f05e75",
+          "setup.py": "94d355ed0f964b951861f106324cc9d50365b53dd3423eed3dd190d0f7f1dcf8",
+          "verify.py": "7ccebb5dedda80c18565b7faf6022776ef133ca083bc34e52231726eb18b8301"
+        },
+        "lock_sha256": "959dc67a75b58e8da7d8807fafe21279cc61311c6b3037da5dc86868376afe6c",
+        "model_sha256": "76c4508ff2091e008de23ddec32ecfc86f989e172916702cadd37511dc68b672",
+        "package_manifest_sha256": "9e2da0822adad6fa436eebd771640f0648f58e9d78f8203d240b98afe6ef7e02",
+        "profile": "windows",
+        "runtime": {
+          "bits": 64,
+          "implementation": "CPython",
+          "libc": "",
+          "libc_version": "",
+          "machine": "AMD64",
+          "macos": "",
+          "system": "Windows",
+          "version": "3.11.0"
+        }
+      },
+      "setup_receipt_sha256": "6e8e5e8d6836320f4029cce603d52a7eff871c49f335600cd7ca266cab06527c",
+      "status": "exact_reproduction_passed",
+      "tests": {
+        "discovered": 20,
+        "passed": 20,
+        "skip_reason": null,
+        "skipped": 0
+      }
+    }
+  },
+  "provided_video_used": false,
+  "recorded_utc": "2026-11-09T22:42:35.123627+00:00",
+  "reference_sha256": "35d905533b696bee3f29da3e6c9f24ebab76780982e9f2325b6e67784dfea303",
+  "repository": "https://github.com/larrymai33/ochtagon-possession",
+  "schema": "ochtagon-platform-verification-v1",
+  "setup_source": "committed implementation files in working checkout; hashes matched clean clone",
+  "target_ground_truth_used": false,
+  "tested_commit": "7f27085bfc9024391b22deda827b27ef1fc39f42",
+  "training_performed": false
+}

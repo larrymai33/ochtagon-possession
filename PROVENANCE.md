@@ -44,11 +44,27 @@ Inference requires the separately obtained competition files:
 
 These identities are copied from the existing frozen input provenance. The repository includes neither those files nor video, ground truth, raw tracking exports or training caches. The pretrained inference path does not require the private research repository.
 
-The supported runtime is Windows AMD64, CPython 3.11.0, with the exact nineteen distributions in `package/repro/requirements-windows-cp311.lock`. Core versions are NumPy 1.26.4, scikit-learn 1.3.2 and Torch 2.11.0+cu128. Inference uses CPU and four threads. The CUDA-enabled wheel is retained for runtime identity, not a GPU requirement. Exact-file reproduction on other operating systems or Python versions is not established.
+The frozen Windows runtime is AMD64, CPython 3.11.0, with the exact nineteen distributions in `package/repro/requirements-windows-cp311.lock`. Core versions are NumPy 1.26.4, scikit-learn 1.3.2 and Torch 2.11.0+cu128. Its CUDA-enabled wheel is retained for runtime identity; inference uses CPU and four threads.
 
-**Exact reproduction passed on November 9, 2026.** A fresh Git checkout of commit `eba959d33ca8f3a1cd52ab4e997455e871e24c26`, matching the remote clone, reproduced the reference CSV in a newly installed environment with all nineteen pinned wheels. Dependency checks, official CSV format validation and all 13 release tests passed. Two independent CSV generations, with four inference passes in total, produced identical bytes; the deliverable CSV matched them.
+The outer setup tooling adds separate CPU profiles without changing the frozen model or package:
 
-The CSV has 199,319 ordered rows, is 1,882,093 bytes, and has SHA-256 `35d905533b696bee3f29da3e6c9f24ebab76780982e9f2325b6e67784dfea303`. This verification used the same Windows AMD64 host with CPython 3.11.0; it does not establish reproduction on another machine or operating system. See [the reference identity](verification/reference.json), [machine-readable evidence](verification/reproduction.json), and [reproduction record](verification/REPRODUCTION.md).
+| Profile | Interpreter and platform | Dependency lock | Verification status |
+| --- | --- | --- | --- |
+| Windows | CPython 3.11.0, AMD64 | `package/repro/requirements-windows-cp311.lock` | Fresh Command Prompt setup and exact CSV reproduction passed |
+| Linux | CPython 3.11.x, x86_64, glibc 2.28+ | `requirements/linux-cpu.lock` | Fresh setup and exact CSV reproduction passed on local Ubuntu WSL |
+| macOS | CPython 3.11.x, Apple Silicon/arm64, macOS 12+ | `requirements/macos-arm64.lock` | All 19 wheels downloaded, hashes and metadata checked; execution untested |
+
+Linux uses Torch 2.11.0+cpu; macOS uses its CPU-capable Torch 2.11.0 wheel. Both retain NumPy 1.26.4, pandas 1.5.2, scikit-learn 1.3.2 and SciPy 1.10.1. [requirements/SOURCES.json](requirements/SOURCES.json) records their wheel origins and hashes. Intel macOS and Linux ARM profiles are not included. A resolved wheel set does not establish successful model loading or exact CSV reproduction.
+
+The Python workflows passed full reproduction from clean code commit `7f27085bfc9024391b22deda827b27ef1fc39f42` with newly installed pinned environments on Windows and local Ubuntu WSL. Both passed the official validator and produced the reference CSV bytes. Windows passed 20 release tests; Linux passed 16 with four PowerShell-specific tests skipped. The Linux environment was x86_64, glibc 2.43, CPython 3.11.18 and Torch 2.11.0+cpu. Both environments ran on the same physical host. [verification/PLATFORMS.md](verification/PLATFORMS.md) records their scope and receipts.
+
+The macOS wheel download check verified all 154,559,425 bytes against recorded hashes, sizes and embedded metadata. It did not install or execute the wheels on a Mac; macOS execution remains untested.
+
+`scripts/setup.py` needs no match data and records the selected profile, runtime and locked environment in the external run folder. `scripts/reproduce.py` creates a fresh setup or verifies an existing completed setup before inference. When setup uses an explicit `--python` interpreter, reproduction must receive the same path. It retains the frozen platform-native CSV and original receipt under `native-output/`, then writes the submission CSV and a separate receipt under `output/` using CRLF newlines. This serialization changes neither frame numbers nor labels. Every profile must match the same final reference hash; a mismatch is a failed run. The original PowerShell workflow and its evidence remain available.
+
+**Original Windows verification, November 9, 2026.** A fresh Git checkout of commit `eba959d33ca8f3a1cd52ab4e997455e871e24c26`, matching the remote clone, reproduced the reference CSV in a newly installed environment with all nineteen pinned wheels. Dependency checks, official CSV format validation and all 13 release tests passed. Two independent CSV generations, with four inference passes in total, produced identical bytes; the deliverable CSV matched them.
+
+The CSV has 199,319 ordered rows, is 1,882,093 bytes, and has SHA-256 `35d905533b696bee3f29da3e6c9f24ebab76780982e9f2325b6e67784dfea303`. That original verification covered Windows AMD64 with CPython 3.11.0; the separate later record adds Ubuntu WSL evidence on the same physical host. Neither establishes reproduction on another machine or every supported OS release. See [the reference identity](verification/reference.json), [original machine-readable evidence](verification/reproduction.json), and [original reproduction record](verification/REPRODUCTION.md).
 
 The output receipt records the model, executable source, input and CSV hashes. CSV validation and reference-hash matching establish format and reproduction; they are not accuracy measurements.
 
