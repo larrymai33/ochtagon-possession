@@ -1,0 +1,26 @@
+# Competition inputs and generated predictions belong outside this repository.
+data/
+outputs/
+output/
+runs/
+*.csv
+*.csv.manifest.json
+*.npz
+*.npy
+*.mp4
+*.mov
+*.avi
+*.xml
+*.parquet
+*.log
+*.whl
+.env
+.env.*
+.venv/
+venv/
+environment/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.DS_Store

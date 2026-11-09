@@ -1,0 +1,20 @@
+{
+  "bytes": 1882093,
+  "date": "2026-11-09",
+  "filename": "ochtagon.csv",
+  "frames": 199319,
+  "input_sha256": {
+    "atd_meta": "327e35e32e46a647389b88f883d4f9a2ab931e3e6148aef2fcf8f22b1e93c43a",
+    "atd_raw": "f130e350d2bfdf734b7e32f072931fccc6d015c1e837d082064875fe0a700431"
+  },
+  "model_sha256": "76c4508ff2091e008de23ddec32ecfc86f989e172916702cadd37511dc68b672",
+  "official_format_validation_passed": true,
+  "package_manifest_sha256": "9e2da0822adad6fa436eebd771640f0648f58e9d78f8203d240b98afe6ef7e02",
+  "provided_video_used": false,
+  "repeated_inference_equal": true,
+  "research_commit": "8017a0a46ff873b71084a5396ece2980ac14a708",
+  "schema": "ochtagon-reference-v1",
+  "submission_sha256": "35d905533b696bee3f29da3e6c9f24ebab76780982e9f2325b6e67784dfea303",
+  "target_ground_truth_used": false,
+  "team": "ochtagon"
+}

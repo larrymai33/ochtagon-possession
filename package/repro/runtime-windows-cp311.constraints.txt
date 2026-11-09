@@ -1,0 +1,27 @@
+# Exact installed Python-distribution closure used for the successful snapshot
+# reproduction on Windows AMD64, CPython 3.11.0 (2026-10-24).
+# This is a constraints file, NOT a complete installation recipe or wheel lock.
+# Companion wheels.json and requirements lock pin wheel URLs/hashes. A Python
+# installer record and fresh-environment rehearsal remain separate requirements.
+# Do not silently replace torch's +cu128 build with CPU or another CUDA build.
+# Derived from active Requires-Dist markers without optional extras. All active
+# installed requirements and Requires-Python constraints were satisfied.
+filelock==3.12.0
+fsspec==2026.2.0
+jinja2==3.1.6
+joblib==1.3.2
+markupsafe==2.1.3
+mpmath==1.3.0
+networkx==3.1
+numpy==1.26.4
+pandas==1.5.2
+python-dateutil==2.8.2
+pytz==2026.3.post1
+scikit-learn==1.3.2
+scipy==1.10.1
+setuptools==69.2.0
+six==1.16.0
+sympy==1.14.0
+threadpoolctl==3.2.0
+torch==2.11.0+cu128
+typing-extensions==4.16.0

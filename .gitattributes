@@ -1,0 +1,4 @@
+* text=auto eol=lf
+# These files are a byte-exact frozen release, including mixed source line endings.
+package/** -text
+LICENSE -text
