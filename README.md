@@ -2,6 +2,8 @@
 
 Reproduce the **ochtagon** possession CSV for More Than A Hack 2027 using the frozen `observation_gap_v1` model. It uses automatic tactical tracking and a pretrained tree/two-network ensemble. The repository contains the model, its complete inference source, pinned dependencies, and verification tools.
 
+**Exact reproduction verified on November 9, 2026:** a fresh Git checkout and newly installed pinned environment produced a byte-identical CSV on the same Windows host. Official format validation and all 13 release tests passed. See [the reproduction record](verification/REPRODUCTION.md) for the tested commit, output hash and scope.
+
 The competition data must be obtained separately by an authorized participant. The model is already trained; reproduction runs inference only.
 
 ## Reproduce

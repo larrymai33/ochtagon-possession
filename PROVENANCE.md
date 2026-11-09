@@ -46,7 +46,9 @@ These identities are copied from the existing frozen input provenance. The repos
 
 The supported runtime is Windows AMD64, CPython 3.11.0, with the exact nineteen distributions in `package/repro/requirements-windows-cp311.lock`. Core versions are NumPy 1.26.4, scikit-learn 1.3.2 and Torch 2.11.0+cu128. Inference uses CPU and four threads. The CUDA-enabled wheel is retained for runtime identity, not a GPU requirement. Exact-file reproduction on other operating systems or Python versions is not established.
 
-The reference CSV has 199,319 ordered rows and is 1,882,093 bytes. Its official format validation passed, and two inference passes produced identical labels. [verification/reference.json](verification/reference.json) records its hash and frame count. A fresh-checkout run in a newly installed environment is still pending; its outcome will be recorded in [verification/REPRODUCTION.md](verification/REPRODUCTION.md).
+**Exact reproduction passed on November 9, 2026.** A fresh Git checkout of commit `eba959d33ca8f3a1cd52ab4e997455e871e24c26`, matching the remote clone, reproduced the reference CSV in a newly installed environment with all nineteen pinned wheels. Dependency checks, official CSV format validation and all 13 release tests passed. Two independent CSV generations, with four inference passes in total, produced identical bytes; the deliverable CSV matched them.
+
+The CSV has 199,319 ordered rows, is 1,882,093 bytes, and has SHA-256 `35d905533b696bee3f29da3e6c9f24ebab76780982e9f2325b6e67784dfea303`. This verification used the same Windows AMD64 host with CPython 3.11.0; it does not establish reproduction on another machine or operating system. See [the reference identity](verification/reference.json), [machine-readable evidence](verification/reproduction.json), and [reproduction record](verification/REPRODUCTION.md).
 
 The output receipt records the model, executable source, input and CSV hashes. CSV validation and reference-hash matching establish format and reproduction; they are not accuracy measurements.
 
