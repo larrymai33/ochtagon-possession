@@ -157,6 +157,42 @@ class ReproductionPreflightTests(unittest.TestCase):
         self.assertIn("Tracking SHA-256 mismatch", result.stderr)
         self.assertFalse(run_root.exists())
 
+    def test_subprocess_uses_run_temp_and_restores_environment_after_failure(self):
+        # Exercise the real storage/save/finally blocks without installing packages.
+        source = self.script.read_text(encoding="utf-8")
+        storage_start = source.find("    $temporaryRoot =")
+        self.assertGreaterEqual(storage_start, 0, "run-local temporary storage is missing")
+        save = source[source.index("$savedEnvironment = @{}"):source.index("$startTime =")]
+        storage = source[storage_start:source.index("    $logRoot =", storage_start)]
+        restore = source[source.rindex("    foreach ($name in $savedEnvironment.Keys)"):source.rindex("\n}")]
+        run_root = self.directory / "storage-smoke"
+        run_root.mkdir()
+        smoke = self.directory / "storage-smoke.ps1"
+        smoke.write_text("""param([string]$pythonPath, [string]$runPath)
+$ErrorActionPreference = 'Stop'
+$beforeTemp = [Environment]::GetEnvironmentVariable('TEMP', 'Process')
+$beforeTmp = [Environment]::GetEnvironmentVariable('TMP', 'Process')
+""" + save + "\ntry { try {\n" + storage + """
+    $observed = 'import tempfile; print(tempfile.gettempdir())' | & $pythonPath -I -B -
+    if ($LASTEXITCODE -ne 0) { throw 'tempfile probe failed' }
+    throw 'expected smoke interruption'
+} finally {
+""" + restore + """
+} } catch {
+    if ($_.Exception.Message -ne 'expected smoke interruption') { throw }
+}
+@{tempdir=$observed; restored=(($beforeTemp -ceq [Environment]::GetEnvironmentVariable('TEMP', 'Process')) -and ($beforeTmp -ceq [Environment]::GetEnvironmentVariable('TMP', 'Process')))} | ConvertTo-Json -Compress
+""", encoding="utf-8")
+        result = subprocess.run([
+            shutil.which("powershell") or shutil.which("pwsh"), "-NoProfile", "-NonInteractive",
+            "-ExecutionPolicy", "Bypass", "-File", str(smoke), str(sys.executable), str(run_root),
+        ], text=True, capture_output=True, timeout=30)
+        self.assertEqual(result.returncode, 0, result.stderr)
+        report = json.loads(result.stdout)
+        self.assertEqual(Path(report["tempdir"]).resolve(), (run_root / "temp").resolve())
+        self.assertTrue(report["restored"])
+        self.assertTrue((run_root / "pip-cache").is_dir())
+
 
 if __name__ == "__main__":
     unittest.main()

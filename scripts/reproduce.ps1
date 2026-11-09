@@ -57,7 +57,7 @@ foreach ($relative in $inputHashes.Keys) {
 }
 $pythonPath = (Resolve-Path -LiteralPath $Python311).ProviderPath
 $savedEnvironment = @{}
-foreach ($name in @('PYTHONPATH', 'PYTHONHOME', 'PYTHONDONTWRITEBYTECODE')) {
+foreach ($name in @('PYTHONPATH', 'PYTHONHOME', 'PYTHONDONTWRITEBYTECODE', 'TEMP', 'TMP')) {
     $savedEnvironment[$name] = [Environment]::GetEnvironmentVariable($name, 'Process')
 }
 $startTime = [DateTime]::UtcNow
@@ -77,6 +77,11 @@ try {
         throw 'verification/reference.json is required before reproduction.'
     }
     New-Item -ItemType Directory -Path $runPath -ErrorAction Stop | Out-Null
+    $temporaryRoot = Join-Path $runPath 'temp'
+    $pipCacheRoot = Join-Path $runPath 'pip-cache'
+    New-Item -ItemType Directory -Path $temporaryRoot, $pipCacheRoot | Out-Null
+    [Environment]::SetEnvironmentVariable('TEMP', $temporaryRoot, 'Process')
+    [Environment]::SetEnvironmentVariable('TMP', $temporaryRoot, 'Process')
     $logRoot = Join-Path $runPath 'logs'
     $outputRoot = Join-Path $runPath 'output'
     New-Item -ItemType Directory -Path $logRoot, $outputRoot | Out-Null
@@ -105,7 +110,7 @@ try {
     Invoke-CheckedPython -Executable $pythonPath -Arguments @('-I', '-B', '-m', 'venv', $environmentPath) -LogName '01-venv.log'
     $venvPython = Join-Path $environmentPath 'Scripts/python.exe'
     $requirements = Join-Path $packageRoot 'repro/requirements-windows-cp311.lock'
-    Invoke-CheckedPython -Executable $venvPython -Arguments @('-I', '-B', '-m', 'pip', '--isolated', 'install', '--require-hashes', '--only-binary=:all:', '-r', $requirements) -LogName '02-install.log'
+    Invoke-CheckedPython -Executable $venvPython -Arguments @('-I', '-B', '-m', 'pip', '--isolated', '--cache-dir', $pipCacheRoot, 'install', '--require-hashes', '--only-binary=:all:', '-r', $requirements) -LogName '02-install.log'
     Invoke-CheckedPython -Executable $venvPython -Arguments @('-I', '-B', '-m', 'pip', '--isolated', 'check') -LogName '03-pip-check.log'
     Invoke-CheckedPython -Executable $venvPython -Arguments @('-I', '-B', (Join-Path $PSScriptRoot 'verify.py')) -LogName '04-package-check.log'
     $outputCsv = Join-Path $outputRoot 'ochtagon.csv'

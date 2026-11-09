@@ -6,7 +6,7 @@ The competition data must be obtained separately by an authorized participant. T
 
 ## Reproduce
 
-Use Windows AMD64 with **CPython 3.11.0**, PowerShell, Git, internet access for dependency downloads, and a filesystem supporting hard links. Allow space for approximately 2.84 GB of wheel downloads plus the installed environment. Inference runs on CPU; a CUDA GPU is not required.
+Use Windows AMD64 with **CPython 3.11.0**, PowerShell, Git, internet access for dependency downloads, and a filesystem supporting hard links. Allow at least **15 GB free on the drive containing `RunRoot`** for downloads, installation, temporary files and outputs. The wheel downloads alone are approximately 2.84 GB. Inference runs on CPU; a CUDA GPU is not required.
 
 Clone the repository, which currently requires access because public release is pending:
 
@@ -31,7 +31,7 @@ Open a fresh PowerShell window in this repository's root. Replace the three path
   -Python311 'C:\path\to\Python311\python.exe'
 ```
 
-The script verifies the frozen package, creates an isolated environment, installs the exact nineteen-wheel hash lock, and runs the model twice. Both runs must produce identical labels. It writes:
+The script verifies the frozen package, creates an isolated environment, installs the exact nineteen-wheel hash lock, and runs the model twice. Installation temporary files and the pip cache stay within `RunRoot`. Both runs must produce identical labels. It writes:
 
 ```text
 <RunRoot>/output/ochtagon.csv
