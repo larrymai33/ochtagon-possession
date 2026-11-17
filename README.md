@@ -20,7 +20,7 @@ The tested code commit is `7f27085bfc9024391b22deda827b27ef1fc39f42`. Windows pa
 
 Intel Macs and Linux ARM are not configured. Windows uses the original [nineteen-wheel lock](package/repro/requirements-windows-cp311.lock); Linux and macOS use the platform locks and source records under [requirements/](requirements/README.md). Setup validates the selected interpreter and platform before installation.
 
-Install the required Python and Git first; the scripts create environments but do not install a Python interpreter. Allow at least **15 GB free on the drive containing the run folder** for downloads, installation, temporary files and outputs. Windows wheel downloads alone are approximately 2.84 GB. The run filesystem must support hard links. Clone the repository, which currently requires access because public release is pending:
+Install the required Python and Git first; the scripts create environments but do not install a Python interpreter. Allow at least **15 GB free on the drive containing the run folder** for downloads, installation, temporary files and outputs. Windows wheel downloads alone are approximately 2.84 GB. The run filesystem must support hard links. Clone the repository:
 
 ```text
 git clone https://github.com/larrymai33/ochtagon-possession.git
@@ -113,6 +113,10 @@ These workflows perform integrity, format and reproduction checks. They do not s
 
 The `package/` directory preserves the November 3, 2026 candidate byte for byte. Its historical records describe that snapshot; later reproduction evidence belongs to this repository's verification records.
 
+The upstream [LICENSE](LICENSE) is preserved verbatim. Its references to `evaluation/gt/`, [DATA.md](https://github.com/metrica-sports/more-than-a-hack-2027/blob/main/DATA.md) and [RULES.md](https://github.com/metrica-sports/more-than-a-hack-2027/blob/main/RULES.md) describe the upstream competition repository; those files and ground truth are not included here. Competition inputs are separately licensed. Attribution and the retained licence scope are explained in [third-party notices](package/THIRD_PARTY_NOTICES.md).
+
+Some frozen evidence links retain their original research locations. The final-fit receipt is included here as [package/evidence/fit.json](package/evidence/fit.json), and the original package guide is [package/README.md](package/README.md). The clarification's links to the private research ledger and rebuild design identify historical records omitted from this release; they are not inference dependencies. Use this README and [PROVENANCE.md](PROVENANCE.md) for the standalone reproduction workflow.
+
 ## Evidence and scope
 
 The earlier Windows PowerShell rehearsal at commit `eba959d33ca8f3a1cd52ab4e997455e871e24c26` passed exact reproduction and 13 release tests. Its [original reproduction record](verification/REPRODUCTION.md) remains unchanged alongside the later platform evidence.
@@ -121,4 +125,4 @@ On sixteen repeatedly used external development matches, mean spellF1 was **0.74
 
 The packaged candidate was trained and selected using the declared external data. Earlier research included target-ground-truth tuning, provided-video fitting and a documented public-GT disclosure. Those activities are not inputs to this inference workflow, but a new repository does not erase that history or resolve competition eligibility. See [the technical document](ochtagon.md), [provenance](PROVENANCE.md), and the [superseding organizer clarification](package/RULES_CLARIFICATION_2026-11-03.md).
 
-This repository is prepared for review. Public release and form submission are separate actions.
+Repository publication does not submit the competition entry. Upload the CSV and technical document, with this repository's public URL, through the organizer's submission form.
